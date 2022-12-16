@@ -1,0 +1,12 @@
+.company-form-wrapper {
+    padding: 40px 100px;
+    form {
+        display: flex;
+        flex-direction: column;
+        row-gap: 16px;
+
+        .submit-button {
+            margin-top: 20px;
+        }
+    }
+}

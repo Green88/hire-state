@@ -1,0 +1,12 @@
+.main-page {
+    background-color: #e9f6f7;
+    height: 90vh;
+
+    .companies {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+}

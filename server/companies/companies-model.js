@@ -9,6 +9,7 @@ const companySchema = new Schema({
     known_members: [String],
     technologies: [String],
     location: String,
+    address: String,
     location_score: Number,
     hybridity: Number, // 0, 1, 2, 3 days weekly at home
     size: [Number], // [1,20], [20, 100], [300, 1000]

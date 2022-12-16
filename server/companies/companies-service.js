@@ -2,7 +2,7 @@ const Company = require('./companies-model');
 
 const getAll = () => Company.find({});
 
-const getById = (id) => Company.findById(id);
+const getById = (id) => Company.findById(id).select('-__v');
 
 const create = async (data) => {
     const company = new Company(data);
@@ -10,10 +10,13 @@ const create = async (data) => {
     return data;
 };
 
-const update = async (data) => {
-    const { id } = data;
-    await Company.updateOne({ id }, data);
-    return data;
+const update = async (id, data) => {
+    console.log('id', id);
+    console.log('data', data);
+    await Company.findByIdAndUpdate(id, data);
+    const updated = await getById(id);
+    console.log(updated);
+    return updated;
 };
 
 module.exports = {

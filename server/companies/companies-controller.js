@@ -33,9 +33,9 @@ const createCompany = async (req, res) => {
 };
 
 const updateCompany = async (req, res) => {
-    const { body } = req;
+    const { body, params: {id} } = req;
     try {
-        const company = await update(body);
+        const company = await update(id, body);
         res.send(company);
     } catch (err) {
         console.error('Could not update company', err);
