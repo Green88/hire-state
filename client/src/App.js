@@ -1,33 +1,14 @@
 import {
-  useNavigate,
   Routes,
   Route,
-  Outlet,
   BrowserRouter
 } from 'react-router-dom';
-import Button from '@mui/material/Button';
+import BasicLayout from './components/BasicLayout';
 import MainPage from './pages/MainPage';
 import AddCompanyPage from './pages/AddCompanyPage';
 import EditCompanyPage from './pages/EditCompanyPage';
 import POCPage from './pages/POCPage';
-import './App.scss';
 
-
-function BasicLayout() {
-	const navigate = useNavigate();
-  	const handleClick = () => {
-		navigate('/poc');
-  	};
-	return (
-	  <div className="App">
-		<header className="App-header">
-			<Button onClick={handleClick}>Prefs</Button>
-			HIRE STATE
-      	</header>
-		<Outlet />
-	  </div>
-	)
-  }
 
 function App() {
   return (
