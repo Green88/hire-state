@@ -7,6 +7,7 @@ import BasicLayout from './components/BasicLayout';
 import MainPage from './pages/MainPage';
 import AddCompanyPage from './pages/AddCompanyPage';
 import EditCompanyPage from './pages/EditCompanyPage';
+import SettingsPage from './pages/SettingsPage';
 import POCPage from './pages/POCPage';
 
 
@@ -18,6 +19,7 @@ function App() {
 				<Route index element={<MainPage />}/>
 				<Route path="company/new" element={<AddCompanyPage />} />
 				<Route path="company/:id" element={<EditCompanyPage />} />
+				<Route path="settings" element={<SettingsPage />} />
 				<Route path="poc" element={<POCPage />} />
 			</Route>
 		</Routes>

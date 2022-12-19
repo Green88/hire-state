@@ -1,18 +1,25 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from '@mui/material/Button';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
+import LoginModal from './LoginModal';
 import './Header.scss'; 
 
+
 const Header = () => {
-    const navigate = useNavigate();
-    const handleClick = () => {
-		navigate('/poc');
-  	};
+	const currentUser = localStorage.getItem('user');
+	const [user, setUser] = useState(currentUser || '');
+	const handleCurrentUserChange = (username) => {
+		setUser(username);
+	};
     return (
         <header className="app-header">
-            <Button onClick={handleClick}>Prefs</Button>
+            {user ? (
+              <Link to="settings">
+                <SettingsSuggestIcon sx={{cursor: 'pointer'}} />
+              </Link>
+            ) : <span />}
             <span>HIRE STATE</span>
-            <span />
+            <LoginModal currentUser={user} onCurrentUserChange={handleCurrentUserChange} />
         </header>
       );
 };
