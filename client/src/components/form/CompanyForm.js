@@ -4,7 +4,8 @@ import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import FormMultiChipSelector from './FormMultiChipSelector';
 import FormTextField from './FormTextField';
-import { TECHNOLOGIES } from '../../constants';
+import FormSelector from './FormSelector';
+import { TECHNOLOGIES, INDUSTRIES, LOCATIONS, COMPANY_STATUS } from '../../constants';
 import './CompanyForm.scss';
 
 const CompanySchema = Yup.object().shape({
@@ -42,11 +43,11 @@ const CompanyForm = ({initialValues, onSubmit, buttonText='SUBMIT'}) => {
                 <Form className="company-form">
                     <FormTextField id="name" label="Company name" variant="standard" />
                     <FormTextField id="link" label="Link" variant="standard" />
-                    <FormTextField id="industry" label="Industry" variant="standard" />
+                    <FormSelector id="industry" label="Industry" options={INDUSTRIES} />
                     <FormMultiChipSelector id="technologies" options={TECHNOLOGIES} label="Technology" />
                     <FormTextField id="ceo" label="CEO" variant="standard" />
                     <FormTextField id="known_members" label="People I know" variant="standard" />
-                    <FormTextField id="location" label="Location" variant="standard" />
+                    <FormSelector id="location" label="Location" options={LOCATIONS.CENTER} />
                     <FormTextField id="address" label="Address" variant="standard" />
                     <FormTextField id="location_score" label="Location score" variant="standard" />
                     <div className="range-input">
@@ -54,7 +55,7 @@ const CompanyForm = ({initialValues, onSubmit, buttonText='SUBMIT'}) => {
                         <FormTextField id="size_max" label="Size up to" variant="standard" />
                     </div>
                     <FormTextField id="hybridity" label="Days at home" variant="standard" />
-                    <FormTextField id="status" label="Company status" variant="standard" />
+                    <FormSelector id="status" label="Company status" options={COMPANY_STATUS} />
                     <FormTextField id="series" label="Series" variant="standard" />
                     <FormTextField id="funding" label="Funding" variant="standard" />
                     <FormTextField id="salary" label="Salary" variant="standard" />

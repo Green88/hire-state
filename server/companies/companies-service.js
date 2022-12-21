@@ -11,11 +11,8 @@ const create = async (data) => {
 };
 
 const update = async (id, data) => {
-    console.log('id', id);
-    console.log('data', data);
     await Company.findByIdAndUpdate(id, data);
     const updated = await getById(id);
-    console.log(updated);
     return updated;
 };
 

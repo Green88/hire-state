@@ -5,6 +5,6 @@ const router = express.Router();
 router.get('/', getPreferences);
 router.get('/:username', getPreferenceByUsername);
 router.post('/', createPreference);
-router.put('/:username', updatePreference);
+router.put('/:id', updatePreference);
 
 module.exports = router;

@@ -2,9 +2,11 @@ const Preference = require('./preferences-model');
 
 const getAll = () => Preference.find({});
 
+const getById = (id) => Preference.findById(id).select('-__v');
+
 const getByUserName = async (username) => {
-    const pref = await Preference.findOne({ username });
-    return pref;
+    const pref = await Preference.findOne({ username }).select('-__v');
+    return { pref };
 };
 
 const create = async (data) => {
@@ -13,10 +15,10 @@ const create = async (data) => {
     return data;
 };
 
-const update = async (data) => {
-    const { id } = data;
-    await Preference.updateOne({ id }, data);
-    return data;
+const update = async (id, data) => {
+    await Preference.findByIdAndUpdate(id, data);
+    const newPref = await getById(id);
+    return {pref: newPref};
 };
 
 module.exports = {

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { fetchCompany, updateCompany } from '../api/companies';
 import CompanyForm from '../components/form/CompanyForm';
 import { serializeCompany, deserializeCompany } from '../utils/company';
-import './AddCompanyPage.scss';
+import './FormPage.scss';
 
 
 const EditCompanyPage = () => {
@@ -32,6 +32,7 @@ const EditCompanyPage = () => {
     };
     
     const onSubmit = (values) => {
+        console.log('company', values);
         sendUpdateCompanyRequest(serializeCompany(values));
     }
 
@@ -44,7 +45,7 @@ const EditCompanyPage = () => {
     }
 
     return (
-        <div className="company-form-wrapper">
+        <div className="form-wrapper">
             <CompanyForm initialValues={company} onSubmit={onSubmit} buttonText="UPDATE COMPANY" />
         </div>
     );

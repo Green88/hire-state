@@ -14,8 +14,6 @@ const MainPage = () => {
         dispatch(fetchCompanies());
     }, [dispatch]);
 
-    console.log({companies, isLoading, success});
-
     if (isLoading) {
         return <div>Loading...</div>;
     }

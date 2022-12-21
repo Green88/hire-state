@@ -1,6 +1,6 @@
 const { getAll, getByUserName, create, update } = require('./preferences-service');
 
-const getPreferences = async (reg, res) => {
+const getPreferences = async (req, res) => {
     try {
         const prefs = await getAll();
         res.send(prefs);
@@ -8,7 +8,6 @@ const getPreferences = async (reg, res) => {
         console.error('Could not get all preferences', err);
         res.status(err.status || 500).send(err.message);
     }
-    
 };
 
 const getPreferenceByUsername = async (req, res) => {
@@ -24,7 +23,15 @@ const getPreferenceByUsername = async (req, res) => {
 
 const createPreference = async (req, res) => {
     const { body } = req;
+    const { username } = body;
     try {
+        const prefByUsername = await getByUserName(username);
+        if (prefByUsername) {
+            const message = `Pref with username ${username} alredy exists, can't create new`
+            console.error(message);
+            res.status(409).send(message);
+            return;
+        }
         const pref = await create(body);
         res.send(pref);
     } catch (err) {
@@ -34,9 +41,9 @@ const createPreference = async (req, res) => {
 };
 
 const updatePreference = async (req, res) => {
-    const { body } = req;
+    const { body, params: {id} } = req;
     try {
-        const pref = await update(body);
+        const pref = await update(id, body);
         res.send(pref);
     } catch (err) {
         console.error('Could not update preference', err);

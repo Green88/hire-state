@@ -1,11 +1,11 @@
-.company-form {
+.company-form, .settings-form {
     .range-input {
         display: flex;
         justify-content: flex-start;
         column-gap: 16px;
     }
 
-    .multi-chip-selector {
+    .multi-chip-selector, .form-selector {
         margin-top: 12px;
     }
 }

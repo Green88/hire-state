@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import CompanyForm from '../components/form/CompanyForm';
 import { saveCompany } from '../api/companies';
 import { serializeCompany } from '../utils/company';
-import './AddCompanyPage.scss';
+import './FormPage.scss';
 
 const initialValues = {
     name: '',
@@ -43,7 +43,7 @@ const AddCompanyPage = () => {
     };
 
     return (
-        <div className="company-form-wrapper">
+        <div className="form-wrapper">
             <CompanyForm initialValues={initialValues} onSubmit={onSubmit} buttonText="ADD COMPANY" />
         </div>
     );
