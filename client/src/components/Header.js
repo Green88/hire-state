@@ -18,7 +18,9 @@ const Header = () => {
                 <SettingsSuggestIcon sx={{cursor: 'pointer'}} />
               </Link>
             ) : <span />}
-            <span>HIRE STATE</span>
+			<Link to="/">
+            	<span>HIRE STATE</span>
+			</Link>
             <LoginModal currentUser={user} onCurrentUserChange={handleCurrentUserChange} />
         </header>
       );

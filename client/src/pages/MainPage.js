@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import CircularProgress from '@mui/material/CircularProgress';
 import { fetchCompanies } from '../actions/companies';
 import Company from '../components/Company';
 import AddCompanyCard from '../components/AddCompanyCard';
@@ -7,6 +8,7 @@ import './MainPage.scss';
 
 
 const MainPage = () => {
+    const currentUser = localStorage.getItem('user');
     const { data: companies, isLoading, success } = useSelector((state) => state.companies);
     const dispatch = useDispatch();
 
@@ -15,7 +17,7 @@ const MainPage = () => {
     }, [dispatch]);
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <CircularProgress />;
     }
 
     if (!success) {
@@ -26,7 +28,7 @@ const MainPage = () => {
         <div className="main-page">
             <div className="companies">
                 <AddCompanyCard />
-                {companies.map(company => <Company key={company._id} {...company} />)}
+                {companies.map(company => <Company key={company._id} {...company} currentUser={currentUser} />)}
             </div>
         </div>
     );

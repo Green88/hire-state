@@ -1,4 +1,4 @@
-const { getAll, getById, create, update, search } = require('./companies-service');
+const { getAll, getById, create, update, updateScore } = require('./companies-service');
 
 const getCompanies = async (reg, res) => {
     try {
@@ -43,9 +43,21 @@ const updateCompany = async (req, res) => {
     }
 };
 
+const updateCompanyScore = async (req, res) => {
+    const { params: {id, username}} = req;
+    try {
+        const result = await updateScore(id, username);
+        res.send(result);
+    } catch (err) {
+        console.error('Could not update company score', err);
+        res.status(err.status || 500).send(err.message);
+    }
+};
+
 module.exports = {
     getCompanies,
     getCompanyById,
     createCompany,
     updateCompany,
+    updateCompanyScore,
 };

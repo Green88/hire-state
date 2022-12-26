@@ -14,7 +14,7 @@ const getPreferenceByUsername = async (req, res) => {
     const { params: { username }} = req;
     try {
         const pref = await getByUserName(username);
-        res.send(pref);
+        res.send({ pref });
     } catch (err) {
         console.error('Could not get preference by username', err);
         res.status(err.status || 500).send(err.message);

@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
 import { fetchPreferences } from '../actions/preferences';
 import { savePrefs, updatePrefs } from '../api/preferences';
 import SettingsForm from '../components/form/SettingsForm';
@@ -29,9 +30,6 @@ const SettingsPage = () => {
         dispatch(fetchPreferences(currentUser));
     }, [dispatch, currentUser]);
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
     const isNew = success && !prefs && prefs === null;
     const formPrefs = isNew ? initialValues : deserializePref(prefs);
 
@@ -53,6 +51,10 @@ const SettingsPage = () => {
         const serialized = serializePref(values);
         sendPrefsRequest(serialized);
     };
+
+    if (isLoading) {
+        return <CircularProgress />;
+    }
     
     return (
         <div className="form-wrapper">

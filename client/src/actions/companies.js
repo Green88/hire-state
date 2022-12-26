@@ -1,5 +1,5 @@
-import { FETCH_COMPANIES, getFailedType, getSuccessType, getPendingType } from './types';
-import { fetchCompanies as fetchCompaniesApi} from '../api/companies';
+import { FETCH_COMPANIES, EDIT_COMPANY_SCORE, getFailedType, getSuccessType, getPendingType } from './types';
+import { fetchCompanies as fetchCompaniesApi, updateCompanyScore as updateCompanyScoreApi } from '../api/companies';
 
 export const fetchCompanies = () => {
     return async (dispatch) => {
@@ -17,6 +17,24 @@ export const fetchCompanies = () => {
             });
         }
     }; 
+};
+
+export const updateCompanyScore = (companyId, username) => {
+    return async (dispatch) => {
+        dispatch({ type: getPendingType(EDIT_COMPANY_SCORE)});
+        try {
+            const response = await updateCompanyScoreApi(companyId, username);
+            dispatch({
+                type: getSuccessType(EDIT_COMPANY_SCORE),
+                payload: response.data,
+            });
+        } catch (err) {
+            console.error(err);
+            dispatch({
+                type: getFailedType(EDIT_COMPANY_SCORE),
+            });
+        }
+    };
 };
 
 

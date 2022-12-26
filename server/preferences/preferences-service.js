@@ -6,7 +6,7 @@ const getById = (id) => Preference.findById(id).select('-__v');
 
 const getByUserName = async (username) => {
     const pref = await Preference.findOne({ username }).select('-__v');
-    return { pref };
+    return pref;
 };
 
 const create = async (data) => {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
 import { fetchCompany, updateCompany } from '../api/companies';
 import CompanyForm from '../components/form/CompanyForm';
 import { serializeCompany, deserializeCompany } from '../utils/company';
@@ -37,7 +38,7 @@ const EditCompanyPage = () => {
     }
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <CircularProgress />;
     }
 
     if (!company) {

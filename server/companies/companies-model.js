@@ -20,6 +20,8 @@ const companySchema = new Schema({
     title: String,
     glassdoor_score: Number,
     glassdoor_comment: String,
+    isRecruting: { type: Boolean, default: true},
+    score: {type: Number, default: 3}
 });
 
 const Company = mongoose.model('company', companySchema);
