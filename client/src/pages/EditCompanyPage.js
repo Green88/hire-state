@@ -33,7 +33,6 @@ const EditCompanyPage = () => {
     };
     
     const onSubmit = (values) => {
-        console.log('company', values);
         sendUpdateCompanyRequest(serializeCompany(values));
     }
 
