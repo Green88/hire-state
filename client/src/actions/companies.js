@@ -1,5 +1,9 @@
-import { FETCH_COMPANIES, EDIT_COMPANY_SCORE, getFailedType, getSuccessType, getPendingType } from './types';
-import { fetchCompanies as fetchCompaniesApi, updateCompanyScore as updateCompanyScoreApi } from '../api/companies';
+import { FETCH_COMPANIES, EDIT_COMPANY_SCORE, EDIT_COMPANY, getFailedType, getSuccessType, getPendingType } from './types';
+import { 
+    fetchCompanies as fetchCompaniesApi, 
+    updateCompanyScore as updateCompanyScoreApi, 
+    updateCompany as updateCompanyApi,
+} from '../api/companies';
 
 export const fetchCompanies = () => {
     return async (dispatch) => {
@@ -19,9 +23,22 @@ export const fetchCompanies = () => {
     }; 
 };
 
+export const updateCompany = (companyId, data) => {
+    return async (dispatch) => {
+        try {
+            const response = await updateCompanyApi(companyId, data);
+            dispatch({
+                type: getSuccessType(EDIT_COMPANY),
+                payload: response.data,
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    };
+};
+
 export const updateCompanyScore = (companyId, username) => {
     return async (dispatch) => {
-        dispatch({ type: getPendingType(EDIT_COMPANY_SCORE)});
         try {
             const response = await updateCompanyScoreApi(companyId, username);
             dispatch({
@@ -30,9 +47,6 @@ export const updateCompanyScore = (companyId, username) => {
             });
         } catch (err) {
             console.error(err);
-            dispatch({
-                type: getFailedType(EDIT_COMPANY_SCORE),
-            });
         }
     };
 };

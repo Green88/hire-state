@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import CircularProgress from '@mui/material/CircularProgress';
 import { fetchCompanies } from '../actions/companies';
 import Company from '../components/Company';
@@ -9,7 +9,7 @@ import './MainPage.scss';
 
 const MainPage = () => {
     const currentUser = localStorage.getItem('user');
-    const { data: companies, isLoading, success } = useSelector((state) => state.companies);
+    const { data: companies, isLoading, success } = useSelector((state) => state.companies, shallowEqual);
     const dispatch = useDispatch();
 
     useEffect(() => {

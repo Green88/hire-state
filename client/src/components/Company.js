@@ -6,14 +6,18 @@ import CardActions from '@mui/material/CardActions';
 import Divider from '@mui/material/Divider';
 import EditIcon from '@mui/icons-material/Edit';
 import CalculateIcon from '@mui/icons-material/Calculate';
+import BlockIcon from '@mui/icons-material/Block';
 import { Link } from 'react-router-dom'; 
-import { updateCompanyScore } from '../actions/companies';
+import { updateCompanyScore, updateCompany } from '../actions/companies';
 import './Company.scss';
 
-const Company = ({_id, name, link, score, industry, title, location, technologies, currentUser}) => {
+const Company = ({_id, name, link, score, industry, title, location, technologies, isRecruting, currentUser}) => {
     const dispatch = useDispatch();
     const onCalculateClick = () => {
         dispatch(updateCompanyScore(_id, currentUser));
+    };
+    const onToggleRecruting = () => {
+        dispatch(updateCompany(_id, {isRecruting: !isRecruting}));
     };
     return (
         <Card className="company-card" sx={{ minWidth: 275, maxWidth: 400 }}>
@@ -32,7 +36,8 @@ const Company = ({_id, name, link, score, industry, title, location, technologie
             <CardActions>
                 <div className="left-icons">
                     <Link to={`company/${_id}`}><EditIcon /></Link>
-                    {currentUser ? <CalculateIcon onClick={onCalculateClick} /> : null}
+                    {currentUser ? <CalculateIcon onClick={onCalculateClick} sx={{cursor: 'pointer'}} /> : null}
+                    <BlockIcon onClick={onToggleRecruting} color={isRecruting ? 'auto' : 'disabled'} sx={{cursor: 'pointer'}} />
                 </div>
                 <div className="right-icons">
                     <span className="score">{score}</span>
