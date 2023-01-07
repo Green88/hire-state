@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Divider from '@mui/material/Divider';
 import EditIcon from '@mui/icons-material/Edit';
+import ViewTimelineIcon from '@mui/icons-material/ViewTimeline';
 import CalculateIcon from '@mui/icons-material/Calculate';
 import BlockIcon from '@mui/icons-material/Block';
 import { Link } from 'react-router-dom'; 
@@ -38,6 +39,7 @@ const Company = ({_id, name, link, score, industry, title, location, technologie
                     <Link to={`company/${_id}`}><EditIcon /></Link>
                     {currentUser ? <CalculateIcon onClick={onCalculateClick} sx={{cursor: 'pointer'}} /> : null}
                     <BlockIcon onClick={onToggleRecruting} color={isRecruting ? 'auto' : 'disabled'} sx={{cursor: 'pointer'}} />
+                    <Link to={`progress/${_id}?name=${name}`}><ViewTimelineIcon /></Link>
                 </div>
                 <div className="right-icons">
                     <span className="score">{score}</span>
