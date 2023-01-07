@@ -1,6 +1,6 @@
 # HIRE STATE
 
-## Application to track companies and positoins
+## Application to track companies and positions, WIP
 
 Includes both server (node.js) and client (React).
 
