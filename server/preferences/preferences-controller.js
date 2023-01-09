@@ -27,7 +27,7 @@ const createPreference = async (req, res) => {
     try {
         const prefByUsername = await getByUserName(username);
         if (prefByUsername) {
-            const message = `Pref with username ${username} alredy exists, can't create new`
+            const message = `Pref with username ${username} alredy exists, can't create new`;
             console.error(message);
             res.status(409).send(message);
             return;

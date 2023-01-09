@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -30,7 +30,7 @@ function getStyles(item, chosenItem, theme) {
 
 const MultiChipSelector = ({onChange, value, options, label = 'Chip', id }) => {
 	const theme = useTheme();
-	const [chosenItem, setChosenItem] = React.useState(value || []);
+	const [chosenItem, setChosenItem] = useState(value || []);
 
 	const handleChange = (event) => {
 		const {

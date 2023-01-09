@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 import { fetchPreferences } from '../actions/preferences';
 import { savePrefs, updatePrefs } from '../api/preferences';
-import SettingsForm from '../components/form/SettingsForm';
+import SettingsForm from '../components/settings-form/SettingsForm';
 import { serializePref, deserializePref } from '../utils/preferences';
 import './FormPage.scss';
 

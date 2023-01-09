@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import CompanyForm from '../components/form/CompanyForm';
+import CompanyForm from '../components/company-form/CompanyForm';
 import { saveCompany } from '../api/companies';
 import { serializeCompany } from '../utils/company';
 import './FormPage.scss';

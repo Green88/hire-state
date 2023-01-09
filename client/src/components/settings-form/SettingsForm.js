@@ -2,10 +2,10 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import FormMultiChipSelector from './FormMultiChipSelector';
-import FormTextField from './FormTextField';
+import FormMultiChipSelector from '../form-fields/FormMultiChipSelector';
+import FormTextField from '../form-fields/FormTextField';
 import { TECHNOLOGIES, INDUSTRIES, COMPANY_STATUS, LOCATIONS } from '../../constants';
-import './CompanyForm.scss';
+import '../company-form/CompanyForm.scss';
 
 const SettingsSchema = Yup.object().shape({
     industry: Yup.array()

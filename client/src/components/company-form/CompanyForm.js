@@ -2,9 +2,9 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import FormMultiChipSelector from './FormMultiChipSelector';
-import FormTextField from './FormTextField';
-import FormSelector from './FormSelector';
+import FormMultiChipSelector from '../form-fields/FormMultiChipSelector';
+import FormTextField from '../form-fields/FormTextField';
+import FormSelector from '../form-fields/FormSelector';
 import { TECHNOLOGIES, INDUSTRIES, LOCATIONS, COMPANY_STATUS } from '../../constants';
 import './CompanyForm.scss';
 

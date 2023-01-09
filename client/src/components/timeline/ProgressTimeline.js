@@ -7,7 +7,7 @@ import TimelineItem from './TimelineItem';
 
 import './ProgressTimeline.scss';
 
-const ProgressTimeline = ({items}) => {
+const ProgressTimeline = ({items, onAdTimelineItem}) => {
     return (
         <div className="progress-timeline">
             <Timeline>
@@ -16,11 +16,11 @@ const ProgressTimeline = ({items}) => {
                 ))}
             </Timeline>
             {items.length ? (
-                <IconButton>
+                <IconButton onClick={onAdTimelineItem}>
                     <AddIcon />
                 </IconButton>
             ) : (
-                <Button variant="contained" size="small">Start process</Button>
+                <Button variant="contained" size="small" onClick={onAdTimelineItem}>Start process</Button>
             )}
             
         </div>
